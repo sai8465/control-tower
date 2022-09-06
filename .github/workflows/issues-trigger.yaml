@@ -8,7 +8,7 @@ on:
 jobs:
   Create-user:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '/approve') }}
+    if: ${{ github.event.comment.body == '/approve'}}
     steps:
       - name: AWS-controll-tower
         uses: actions/github-script@v4
@@ -23,7 +23,7 @@ jobs:
             });
   Delete-user:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '/delete') }}
+    if: ${{ github.event.comment.body == '/delete'}}
     steps:
       - name: AWS-controll-tower
         uses: actions/github-script@v4
