@@ -6,9 +6,24 @@ on:
       - created
 
 jobs:
-  like-pizza:
+  Create-user:
     runs-on: ubuntu-latest
-    if: ${{ !contains(github.event.head_commit.message, '/approve', '/delete') }}
+    if: ${{ !contains(github.event.head_commit.message, '/approve') }}
+    steps:
+      - name: AWS-controll-tower
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const {owner, repo} = context.issue
+            github.reactions.createForIssueComment({
+              owner,
+              repo,
+              comment_id: context.payload.comment.id,
+              content: "+1",
+            });
+  Delete-user:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '/delete') }}
     steps:
       - name: AWS-controll-tower
         uses: actions/github-script@v4
