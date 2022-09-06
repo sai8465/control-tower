@@ -1,4 +1,4 @@
-name: AWS-controller
+name: AWS-control-tower
 
 on:
   issue_comment:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.comment.body == '/approve'}}
     steps:
-      - name: AWS-controller
+      - name: AWS-controll-tower
         uses: actions/github-script@v4
         with:
           script: |
@@ -21,3 +21,4 @@ jobs:
               comment_id: context.payload.comment.id,
               content: "+1",
             });   
+            
