@@ -1,4 +1,4 @@
-name: Like pizza
+name: AWS-controller
 
 on:
   issue_comment:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.comment.body == '/approve'}}
     steps:
-      - name: Like pizza
+      - name: AWS-controller
         uses: actions/github-script@v4
         with:
           script: |
